@@ -6,6 +6,7 @@ const Home = () => {
     <>
       <Header />
       <h1>this is login</h1>
+      <h1>login here</h1>
     </>
   );
 };
