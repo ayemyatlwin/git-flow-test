@@ -6,6 +6,7 @@ const Home = () => {
     <>
       <Header />
       <h1>this is development</h1>
+      <h1>hello</h1>
     </>
   );
 };
