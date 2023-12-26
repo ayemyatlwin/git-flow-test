@@ -5,7 +5,8 @@ const Home = () => {
   return (
     <>
       <Header />
-      <h1>Home</h1>
+      <h1>this is sidebar</h1>
+      <h1>first time release</h1>
     </>
   );
 };
