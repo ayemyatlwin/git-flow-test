@@ -5,8 +5,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <h1>this is login</h1>
-      <h1>login here</h1>
+      <h1>this is sidebar</h1>
     </>
   );
 };
