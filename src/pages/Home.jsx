@@ -7,6 +7,7 @@ const Home = () => {
       <Header />
       <h1>this is sidebar</h1>
       <h1>first time release</h1>
+      <button>Click here</button>
     </>
   );
 };
