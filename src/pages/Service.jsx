@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 
+const data = [
+  {
+    parents: [{ firstname: "aml", lastname: "aml" }],
+    children: [{ address: "aa", phone: "098989" }],
+  },
+];
+
 const Service = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([...data]);
+  console.log(items);
   const addParentDiv = () => {
     setItems([...items, { parents: [""], children: [] }]);
   };
@@ -24,8 +32,8 @@ const Service = () => {
           <main key={parentIndex} className="parent-div">
             {m.parents.map((p, pIndex) => (
               <div key={pIndex} className="">
-                <input type="text" />
-                <input type="text" />
+                <input type="text" value={p.firstname} onChange={(e)=>e.target.value} />
+                <input type="text" value={p.lastname} />
                 <button onClick={() => addchildDiv(parentIndex)}>
                   Add Child
                 </button>
@@ -33,7 +41,8 @@ const Service = () => {
             ))}
             {m.children.map((c, index) => (
               <div key={index} className="child-div">
-                <input type="text" />
+                <input type="text" value={c.address} />
+                <input type="text" value={c.phone} />
                 <button onClick={() => deletechildDiv(parentIndex, index)}>
                   delete
                 </button>
