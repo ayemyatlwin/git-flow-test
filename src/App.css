@@ -1,0 +1,12 @@
+.parent-div {
+  border: 1px solid lightgray;
+  padding: 15px;
+  margin: 10px;
+}
+.child-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px;
+  padding: 10px;
+}
