@@ -12,15 +12,15 @@ const Service = () => {
 
   console.log(items);
 
-  const handleParentChange = (parentIndex, field, value) => {
+  const handleParentChange = (parentIndex, key, value) => {
     const newItems = [...items];
-    newItems[parentIndex].parents[0][field] = value;
+    newItems[parentIndex].parents[0][key] = value;
     setItems(newItems);
   };
 
-  const handleChildChange = (parentIndex, childIndex, field, value) => {
+  const handleChildChange = (parentIndex, childIndex, key, value) => {
     const newItems = [...items];
-    newItems[parentIndex].children[childIndex][field] = value;
+    newItems[parentIndex].children[childIndex][key] = value;
     setItems(newItems);
   };
 
