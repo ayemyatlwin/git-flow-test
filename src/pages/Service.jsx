@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { produce } from "immer";
+import React, { useCallback, useState } from "react";
 
 const data = [
   {
@@ -12,36 +13,51 @@ const Service = () => {
 
   console.log(items);
 
-  const handleParentChange = (parentIndex, key, value) => {
-    const newItems = [...items];
-    newItems[parentIndex].parents[0][key] = value;
-    setItems(newItems);
-  };
+  const handleParentChange = useCallback((parentIndex, key, value) => {
+    setItems(
+      produce((draft) => {
+        draft[parentIndex].parents[0][key] = value;
+      })
+    );
+  }, []);
 
-  const handleChildChange = (parentIndex, childIndex, key, value) => {
-    const newItems = [...items];
-    newItems[parentIndex].children[childIndex][key] = value;
-    setItems(newItems);
-  };
+  const handleChildChange = useCallback(
+    (parentIndex, childIndex, key, value) => {
+      setItems(
+        produce((draft) => {
+          draft[parentIndex].children[childIndex][key] = value;
+        })
+      );
+    },
+    []
+  );
 
-  const addParentDiv = () => {
-    setItems([
-      ...items,
-      { parents: [{ firstName: "", lastName: "" }], children: [] },
-    ]);
-  };
+  const addParentDiv = useCallback(() => {
+    setItems(
+      produce((draft) => {
+        draft.push({
+          parents: [{ firstName: "", lastName: "" }],
+          children: [],
+        });
+      })
+    );
+  }, []);
 
-  const addchildDiv = (parentIndex) => {
-    const newItems = [...items];
-    newItems[parentIndex].children.push({ address: "", phone: "" });
-    setItems(newItems);
-  };
+  const addchildDiv = useCallback((parentIndex) => {
+    setItems(
+      produce((draft) => {
+        draft[parentIndex].children.push({ address: "", phone: "" });
+      })
+    );
+  }, []);
 
-  const deletechildDiv = (parentIndex, childIndex) => {
-    const newItems = [...items];
-    newItems[parentIndex].children.splice(childIndex, 1);
-    setItems(newItems);
-  };
+  const deletechildDiv = useCallback((parentIndex, childIndex) => {
+    setItems(
+      produce((draft) => {
+        draft[parentIndex].children.splice(childIndex, 1);
+      })
+    );
+  }, []);
 
   return (
     <>
